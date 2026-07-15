@@ -8,6 +8,13 @@ use Illuminate\Http\Request;
 
 class PenggajianController extends Controller
 {
+    /**
+     * Menampilkan halaman dashboard dengan metrik ringkasan penggajian.
+     * * Algoritma: 
+     * - Menggunakan fungsi agregasi (count, sum, avg) dari Eloquent ORM.
+     * - Melakukan Eager Loading (with) untuk memanggil relasi karyawan guna efisiensi query.
+     * * @return \Illuminate\View\View
+     */
     // TAMPILAN DASHBOARD
     public function dashboard()
     {
@@ -48,6 +55,15 @@ class PenggajianController extends Controller
         return view('penggajian.create', compact('dataKaryawan'));
     }
 
+    /**
+     * Menyimpan data transaksi penggajian baru ke database.
+     * * Algoritma:
+     * - Menerima request input dan melakukan validasi form.
+     * - Melakukan operasi aritmatika (Total Gaji = Gaji Pokok + Tunjangan).
+     * - Menyimpan data ke tabel penggajians berelasi dengan karyawan_id.
+     * * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\RedirectResponse
+     */
     // PROSES SIMPAN DATA (CREATE)
     public function store(Request $request)
     {
