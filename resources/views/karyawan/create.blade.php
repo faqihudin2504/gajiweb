@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tambah Karyawan</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { background-color: #f4f6f9; overflow-x: hidden; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
+        .sidebar { background-color: #673ab7; min-height: 100vh; color: #fff; transition: 0.3s; width: 250px;}
+        .sidebar.toggled { margin-left: -250px; }
+        .sidebar .brand { background-color: #512da8; padding: 15px 20px; font-weight: bold; font-size: 1.2rem; }
+        .sidebar-menu { padding: 0; list-style: none; }
+        .sidebar-menu li.menu-header { padding: 10px 20px; font-size: 0.8rem; color: #d1c4e9; text-transform: uppercase; margin-top: 10px; }
+        .sidebar-menu a { color: #ede7f6; text-decoration: none; padding: 12px 20px; display: block; font-size: 0.95rem; }
+        .sidebar-menu a i { width: 25px; }
+        .sidebar-menu a:hover, .sidebar-menu a.active { background-color: #7e57c2; color: #fff; border-left: 4px solid #fff; }
+        
+        .topbar { background-color: #512da8; padding: 12px 20px; color: white; }
+        .content-wrapper { padding: 30px; }
+        .card { border: none; box-shadow: 0 0 15px rgba(0,0,0,0.05); border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <div class="d-flex">
+        <div class="sidebar">
+            <div class="brand"><i class="fas fa-cubes me-2"></i> GajiWeb</div>
+            <ul class="sidebar-menu">
+                <li class="menu-header">Menu Utama</li>
+                <li><a href="{{ route('dashboard') }}"><i class="fas fa-home"></i> Dashboard</a></li>
+                <li><a href="{{ route('karyawan.index') }}" class="active"><i class="fas fa-users"></i> Data Karyawan</a></li>
+                <li><a href="{{ route('penggajian.index') }}"><i class="fas fa-table"></i> Data Penggajian</a></li>
+            </ul>
+        </div>
+
+        <div class="flex-grow-1">
+            <div class="topbar d-flex justify-content-between align-items-center">
+                <div><i class="fas fa-bars fs-5"></i></div>
+                <div><i class="fas fa-user-circle fs-4"></i></div>
+            </div>
+
+            <div class="content-wrapper">
+                <h4 class="mb-4 text-secondary">Tambah Data Karyawan</h4>
+
+                @if ($errors->any())
+                    <div class="alert alert-danger shadow-sm">
+                        <ul class="mb-0">
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
+                <div class="card p-4 col-lg-8">
+                    <form action="{{ route('karyawan.store') }}" method="POST">
+                        @csrf
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Nama Lengkap</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                <input type="text" name="nama_karyawan" class="form-control" placeholder="Masukkan nama karyawan" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label class="form-label fw-bold">Jabatan</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-briefcase"></i></span>
+                                <input type="text" name="jabatan" class="form-control" placeholder="Contoh: Web Designer" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-4">
+                            <label class="form-label fw-bold">No. Telepon (Opsional)</label>
+                            <div class="input-group">
+                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                <input type="text" name="no_telp" class="form-control" placeholder="Contoh: 08123456789">
+                            </div>
+                        </div>
+
+                        <div class="d-flex gap-2">
+                            <button type="submit" class="btn btn-success"><i class="fas fa-save me-1"></i> Simpan</button>
+                            <a href="{{ route('karyawan.index') }}" class="btn btn-secondary"><i class="fas fa-arrow-left me-1"></i> Kembali</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
