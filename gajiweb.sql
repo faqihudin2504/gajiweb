@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Jul 15, 2026 at 11:33 AM
+-- Generation Time: Jul 16, 2026 at 02:23 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.30
 
@@ -116,8 +116,11 @@ CREATE TABLE `karyawans` (
 --
 
 INSERT INTO `karyawans` (`id`, `nama_karyawan`, `jabatan`, `no_telp`, `created_at`, `updated_at`) VALUES
-(2, 'ainur', 'copywriter', '08128234787', '2026-07-15 02:48:25', '2026-07-15 02:48:25'),
-(3, 'faqih', 'Web Designer', '08128234787', '2026-07-15 03:35:31', '2026-07-15 03:35:31');
+(2, 'faqih', 'Java Dev', '2893829839', '2026-07-16 07:13:21', '2026-07-16 07:13:21'),
+(3, 'Rafa', 'QA Tester', '384982394', '2026-07-16 07:13:56', '2026-07-16 07:13:56'),
+(4, 'Andika', 'Software Engineer', '7138718238', '2026-07-16 07:14:56', '2026-07-16 07:14:56'),
+(5, 'Arnaf', 'tesing', '28398239', '2026-07-16 07:15:12', '2026-07-16 07:15:12'),
+(6, 'Daffa', 'software tester', '9239823', '2026-07-16 07:15:33', '2026-07-16 07:15:33');
 
 -- --------------------------------------------------------
 
@@ -175,8 +178,11 @@ CREATE TABLE `penggajians` (
 --
 
 INSERT INTO `penggajians` (`id`, `karyawan_id`, `gaji_pokok`, `tunjangan`, `total_gaji`, `created_at`, `updated_at`) VALUES
-(3, 3, 3000000, 350000, 3350000, '2026-07-15 03:35:49', '2026-07-15 03:35:49'),
-(4, 2, 200000, 300000, 500000, '2026-07-15 03:43:11', '2026-07-15 03:43:11');
+(2, 2, 1000000, 500000, 1500000, '2026-07-16 07:13:31', '2026-07-16 07:13:31'),
+(3, 3, 2000000, 100000, 2100000, '2026-07-16 07:15:51', '2026-07-16 07:15:51'),
+(4, 4, 200000, 500000, 700000, '2026-07-16 07:16:07', '2026-07-16 07:16:07'),
+(5, 6, 300000, 30000, 330000, '2026-07-16 07:16:19', '2026-07-16 07:16:19'),
+(6, 5, 230000, 30000, 260000, '2026-07-16 07:16:36', '2026-07-16 07:16:36');
 
 -- --------------------------------------------------------
 
@@ -198,7 +204,7 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('H5r6NcvwzGMwc2MY7pvRzFZlxM7nBlQdFzrr5jdd', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0', 'eyJfdG9rZW4iOiJ0SWU4c3psVG9EUVM4a3NkV0V3Q0VGZnhMU0R2cTZCRUJYaHRBRm8wIiwiX3ByZXZpb3VzIjp7InVybCI6Imh0dHA6XC9cLzEyNy4wLjAuMTo4MDAwXC9kYXNoYm9hcmQiLCJyb3V0ZSI6ImRhc2hib2FyZCJ9LCJfZmxhc2giOnsib2xkIjpbXSwibmV3IjpbXX19', 1784114986);
+('PTyAAH001xWDllL5d6QGH3TMsSZGxEAdDWKyyR5H', 1, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/150.0.0.0 Safari/537.36 Edg/150.0.0.0', 'eyJfdG9rZW4iOiJUeGszdnJVUTA2SjRsalYwcnNjancxOFZFRXF1Z0VjTlJsRTF0V3FqIiwiX2ZsYXNoIjp7Im9sZCI6W10sIm5ldyI6W119LCJfcHJldmlvdXMiOnsidXJsIjoiaHR0cDpcL1wvMTI3LjAuMC4xOjgwMDBcL2Rhc2hib2FyZCIsInJvdXRlIjoiZGFzaGJvYXJkIn0sImxvZ2luX3dlYl81OWJhMzZhZGRjMmIyZjk0MDE1ODBmMDE0YzdmNThlYTRlMzA5ODlkIjoxfQ==', 1784211627);
 
 -- --------------------------------------------------------
 
@@ -210,12 +216,19 @@ CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
   `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email_verified_at` timestamp NULL DEFAULT NULL,
+  `username` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id`, `name`, `email`, `username`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
+(1, 'Faqih Udin', 'faqihudin364@gmail.com', 'Faqihuddin Muhmd', '$2y$12$HEtIhxKkFDMF5vzAtr6KtOwIW6OWekqz34w/uAAhHrMuxVM13f.dS', NULL, '2026-07-16 05:43:06', '2026-07-16 06:11:39');
 
 --
 -- Indexes for dumped tables
@@ -294,7 +307,8 @@ ALTER TABLE `sessions`
 --
 ALTER TABLE `users`
   ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `users_email_unique` (`email`);
+  ADD UNIQUE KEY `users_email_unique` (`email`),
+  ADD UNIQUE KEY `users_username_unique` (`username`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -316,7 +330,7 @@ ALTER TABLE `jobs`
 -- AUTO_INCREMENT for table `karyawans`
 --
 ALTER TABLE `karyawans`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `migrations`
@@ -328,13 +342,13 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT for table `penggajians`
 --
 ALTER TABLE `penggajians`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
