@@ -60,11 +60,30 @@
         <div class="flex-grow-1">
             
             <div class="topbar d-flex justify-content-between align-items-center">
-                <div>
-                   <div><i class="fas fa-bars fs-5" id="btnToggle" style="cursor: pointer;"></i></div>
-                </div>
-                <div>
-                    <i class="fas fa-user-circle fs-4" style="cursor: pointer;"></i>
+                <div><i class="fas fa-bars fs-5" id="btnToggle" style="cursor: pointer;"></i></div>
+                
+                <div class="dropdown">
+                    <div class="d-flex align-items-center dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="cursor: pointer;">
+                        <i class="fas fa-user-circle fs-3 me-2"></i>
+                        <span class="fw-bold text-uppercase" style="font-size: 0.9rem;">{{ Auth::user()->username }}</span>
+                    </div>
+                    
+                    <ul class="dropdown-menu dropdown-menu-end shadow mt-2" style="width: 250px;">
+                        <li class="text-center py-3 border-bottom">
+                            <i class="fas fa-user-circle text-secondary" style="font-size: 4rem;"></i>
+                            <h6 class="mt-2 mb-0 fw-bold text-uppercase">{{ Auth::user()->username }}</h6>
+                            <small class="text-muted">{{ Auth::user()->email }}</small>
+                        </li>
+                        <li><a class="dropdown-item py-2 mt-2" href="{{ route('profile') }}"><i class="fas fa-user me-2"></i> Profile ku</a></li>
+                        <li>
+                            <form action="{{ route('logout') }}" method="POST">
+                                @csrf
+                                <button type="submit" class="dropdown-item py-2 text-danger">
+                                    <i class="fas fa-power-off me-2"></i> Logout
+                                </button>
+                            </form>
+                        </li>
+                    </ul>
                 </div>
             </div>
 
