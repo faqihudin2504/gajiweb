@@ -35,7 +35,14 @@ class PenggajianController extends Controller
         ));
     }
 
-    // TAMPILAN VIEW SEMUA GAJI
+    /**
+     * Menampilkan daftar riwayat transaksi penggajian.
+     * 
+     * Skalabilitas & Akses Basis Data:
+     * - Menerapkan teknik Eager Loading (with('karyawan')) untuk menghindari N+1 query.
+     * 
+     * @return \Illuminate\View\View
+     */
     public function index()
     {
         // Menarik data penggajian lengkap dengan data karyawannya
