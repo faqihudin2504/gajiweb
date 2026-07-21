@@ -135,7 +135,10 @@
                                 @foreach ($dataKaryawan as $index => $karyawan)
                                 <tr>
                                     <td class="text-center">{{ $index + 1 }}</td>
-                                    <td class="fw-bold">{{ $karyawan->nama_karyawan }}</td>
+                                    <td>
+                                        <i class="fas fa-user-circle fs-4 text-secondary me-2 align-middle"></i> 
+                                        {{ $karyawan->nama_karyawan }}
+                                    </td>
                                     <td>{{ $karyawan->jabatan }}</td>
                                     <td>{{ $karyawan->no_telp ?? '-' }}</td>
                                     <td class="text-center">
