@@ -46,7 +46,7 @@ class KaryawanController extends Controller
         $request->validate([
             'nama_karyawan' => 'required|string|max:255',
             'jabatan' => 'required|string|max:255',
-            'no_telp' => 'nullable|string|max:20',
+            'no_telp' => 'nullable|numeric|max:20',
         ]);
 
         $karyawan->update($request->all());

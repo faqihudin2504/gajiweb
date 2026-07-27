@@ -87,7 +87,7 @@
         </div>
         <h5 class="mb-4 text-dark fw-bold">Buat Akun Admin</h5>
 
-        <!-- Menampilkan Error Validasi (Tidak diubah) -->
+        <!-- Menampilkan Error Validasi -->
         @if ($errors->any())
             <div class="alert alert-danger py-2 text-start" style="font-size: 0.85rem; border-radius: 8px;">
                 <ul class="mb-0 ps-3">
@@ -96,7 +96,7 @@
             </div>
         @endif
 
-        <!-- Form Action & Method (Tidak diubah) -->
+        <!-- Form Action & Method -->
         <form action="{{ route('register.post') }}" method="POST" class="text-start">
             @csrf
             

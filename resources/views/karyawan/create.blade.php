@@ -110,8 +110,8 @@
                         <div class="mb-4">
                             <label class="form-label fw-bold">No. Telepon (Opsional)</label>
                             <div class="input-group">
-                                <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                <input type="text" name="no_telp" class="form-control" placeholder="Contoh: 08123456789">
+                                <span class="input-group-number"><i class="fas fa-phone"></i></span>
+                                <input type="number" name="no_telp" class="form-control" placeholder="Contoh: 08123456789">
                             </div>
                         </div>
 
